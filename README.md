@@ -7,13 +7,9 @@
 The optional source-annotated diagnostics frontend for [Grip](https://github.com/jonaprieto/grip).
 It translates Grip's byte-offset `ParseError` into the rich, pure `TermColor.Diagnostics` model.
 
-![Grip source-annotated parser error](assets/grip-diagnostics.svg)
-
 Grip stays Batteries-only and terminal-independent. This package adds the presentation layer:
 Unicode-aware source context, styled filenames, tabs, CJK display width, color schemes, plain
 output, and optional clickable OSC-8 locations.
-
-![Grip proofs and parser contract](assets/grip-contract.svg)
 
 ## Install
 
