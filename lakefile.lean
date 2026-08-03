@@ -7,7 +7,7 @@ package «grip-diagnostics» where
 
 require grip from git
   "https://github.com/jonaprieto/grip.git"
-  @ "fceb252946b3e840889a9ac50732cf5df0265937"
+  @ "43cdb5710270da0981a9c708d9d6e25fbfb0d1e5"
 
 require «termcolor-diagnostics» from git
   "https://github.com/jonaprieto/lean-termcolor-diagnostics.git"
