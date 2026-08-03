@@ -5,7 +5,10 @@ import subprocess
 import sys
 
 MAX = 100
-files = subprocess.check_output(["rg", "--files", "-g", "*.lean"], text=True).split()
+try:
+    files = subprocess.check_output(["rg", "--files", "-g", "*.lean"], text=True).split()
+except FileNotFoundError:
+    files = subprocess.check_output(["git", "ls-files", "*.lean"], text=True).split()
 violations = []
 for filename in files:
     for line_number, line in enumerate(open(filename, encoding="utf-8"), 1):
