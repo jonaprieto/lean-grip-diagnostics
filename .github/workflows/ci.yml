@@ -57,22 +57,40 @@ jobs:
             git clone --depth=1 "https://x-access-token:${GH_TOKEN}@github.com/jonaprieto/lean-termcolor.git" \
               .lake/packages/termcolor
           fi
+          manifest_rev() {
+            python3 - "$1" <<'PY'
+          import json
+          import sys
+
+          url = sys.argv[1]
+          for package in json.load(open("lake-manifest.json"))["packages"]:
+              if package["url"] == url:
+                  print(package["rev"])
+                  break
+          else:
+              raise SystemExit(f"missing manifest entry: {url}")
+          PY
+          }
+          GRIP_REV="$(manifest_rev 'https://github.com/jonaprieto/grip.git')"
+          DIAGNOSTICS_REV="$(manifest_rev 'https://github.com/jonaprieto/lean-termcolor-diagnostics.git')"
+          LAYOUT_REV="$(manifest_rev 'https://github.com/jonaprieto/lean-termcolor-layout.git')"
+          TERMCOLOR_REV="$(manifest_rev 'https://github.com/jonaprieto/lean-termcolor.git')"
           git -C .lake/packages/grip fetch --depth=1 origin \
-            43cdb5710270da0981a9c708d9d6e25fbfb0d1e5
+            "${GRIP_REV}"
           git -C .lake/packages/termcolor-diagnostics fetch --depth=1 origin \
-            v0.1.8
+            "${DIAGNOSTICS_REV}"
           git -C .lake/packages/termcolor-layout fetch --depth=1 origin \
-            de2394b9e1bd2328e3577115ab4b75fd1d8faf8e
+            "${LAYOUT_REV}"
           git -C .lake/packages/termcolor fetch --depth=1 origin \
-            d0d9a6d24cd06a2ca5de0c47d1860fb0363aa397
+            "${TERMCOLOR_REV}"
           git -C .lake/packages/grip checkout --detach \
-            43cdb5710270da0981a9c708d9d6e25fbfb0d1e5
+            "${GRIP_REV}"
           git -C .lake/packages/termcolor-diagnostics checkout --detach \
-            v0.1.8
+            "${DIAGNOSTICS_REV}"
           git -C .lake/packages/termcolor-layout checkout --detach \
-            de2394b9e1bd2328e3577115ab4b75fd1d8faf8e
+            "${LAYOUT_REV}"
           git -C .lake/packages/termcolor checkout --detach \
-            d0d9a6d24cd06a2ca5de0c47d1860fb0363aa397
+            "${TERMCOLOR_REV}"
       - uses: leanprover/lean-action@v1
         with:
           build-args: "GripDiagnostics GripDiagnostics.Properties tests demo readme"

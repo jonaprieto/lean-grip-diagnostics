@@ -22,7 +22,7 @@ Add the package to `lakefile.lean`:
 ~~~lean
 require «grip-diagnostics» from git
   "https://github.com/jonaprieto/grip-diagnostics.git"
-  @ "v0.2.0"
+  @ "v0.2.1"
 ~~~
 
 `grip-diagnostics` brings in compatible pinned releases of Grip and

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1 — 2026-08-02
+
+- Fix CI to resolve private dependency revisions from `lake-manifest.json` instead of stale pins.
+
 ## 0.2.0 — 2026-08-02
 
 - Made `GripDiagnostics.diagnostic` the only adapter API; callers render through
