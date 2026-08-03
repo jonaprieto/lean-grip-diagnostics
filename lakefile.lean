@@ -2,12 +2,12 @@ import Lake
 open Lake DSL
 
 package «grip-diagnostics» where
-  version := v!"0.1.2"
+  version := v!"0.2.0"
   leanOptions := #[⟨`autoImplicit, false⟩, ⟨`relaxedAutoImplicit, false⟩]
 
 require grip from git
   "https://github.com/jonaprieto/grip.git"
-  @ "43cdb5710270da0981a9c708d9d6e25fbfb0d1e5"
+  @ "4fd16c9"
 
 require «termcolor-diagnostics» from git
   "https://github.com/jonaprieto/lean-termcolor-diagnostics.git"

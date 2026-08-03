@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.0 — 2026-08-02
+
+- Made `GripDiagnostics.diagnostic` the only adapter API; callers render through
+  `TermColor.Diagnostics.render` directly.
+- Kept Grip's dependency-free `ParseError.pretty` as the plain fallback and left rich rendering in
+  the optional TermColor frontend.
+
 ## 0.1.2 — 2026-08-02
 
 - Enable clickable OSC-8 source locations in the interactive demo when styling is enabled.

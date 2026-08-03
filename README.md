@@ -22,7 +22,7 @@ Add the package to `lakefile.lean`:
 ~~~lean
 require «grip-diagnostics» from git
   "https://github.com/jonaprieto/grip-diagnostics.git"
-  @ "v0.1.2"
+  @ "v0.2.0"
 ~~~
 
 `grip-diagnostics` brings in compatible pinned releases of Grip and
@@ -79,10 +79,6 @@ namespace GripDiagnostics
 
 def diagnostic (source : TermColor.Diagnostics.Source) (error : Grip.ParseError)
     (title : String := "parse error") : TermColor.Diagnostics.Diagnostic
-
-def renderError (source : TermColor.Diagnostics.Source) (error : Grip.ParseError)
-    (config : TermColor.Diagnostics.RenderConfig := {})
-    (scheme : TermColor.ColorScheme := TermColor.ColorScheme.catppuccin) : TermColor.Text
 
 end GripDiagnostics
 ~~~

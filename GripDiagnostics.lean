@@ -22,7 +22,6 @@ links from the source bytes.
 namespace GripDiagnostics
 
 open Grip
-open TermColor
 open TermColor.Diagnostics
 
 private def safeOffset (source : Source) (error : ParseError) : Nat :=
@@ -36,13 +35,5 @@ def diagnostic (source : Source) (error : ParseError) (title : String := "parse 
     Diagnostic :=
   (Diagnostic.error title).withLabel
     (Label.primary (Span.point 0 (safeOffset source error)) error.message)
-
-/-- Render a Grip parse failure as pure styled text.
-
-Use `Text.render` for an explicit target or `TermColor.Terminal.writeText` at a CLI's IO
-boundary. -/
-def renderError (source : Source) (error : ParseError) (config : RenderConfig := {})
-    (scheme : ColorScheme := ColorScheme.catppuccin) : Text :=
-  TermColor.Diagnostics.render #[source] (diagnostic source error) config scheme
 
 end GripDiagnostics
