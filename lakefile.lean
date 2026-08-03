@@ -6,7 +6,7 @@ package «grip-diagnostics» where
   leanOptions := #[⟨`autoImplicit, false⟩, ⟨`relaxedAutoImplicit, false⟩]
 
 require grip from git
-  "https://github.com/jonaprieto/grip.git"
+  "https://github.com/jonaprieto/lean-grip.git"
   @ "4fd16c9"
 
 require «termcolor-diagnostics» from git

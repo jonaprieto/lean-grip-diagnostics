@@ -42,7 +42,7 @@ jobs:
           set -euo pipefail
           mkdir -p .lake/packages
           if [ ! -d .lake/packages/grip/.git ]; then
-            git clone --depth=1 "https://x-access-token:${GH_TOKEN}@github.com/jonaprieto/grip.git" \
+            git clone --depth=1 "https://x-access-token:${GH_TOKEN}@github.com/jonaprieto/lean-grip.git" \
               .lake/packages/grip
           fi
           if [ ! -d .lake/packages/termcolor-diagnostics/.git ]; then
@@ -71,7 +71,7 @@ jobs:
               raise SystemExit(f"missing manifest entry: {url}")
           PY
           }
-          GRIP_REV="$(manifest_rev 'https://github.com/jonaprieto/grip.git')"
+          GRIP_REV="$(manifest_rev 'https://github.com/jonaprieto/lean-grip.git')"
           DIAGNOSTICS_REV="$(manifest_rev 'https://github.com/jonaprieto/lean-termcolor-diagnostics.git')"
           LAYOUT_REV="$(manifest_rev 'https://github.com/jonaprieto/lean-termcolor-layout.git')"
           TERMCOLOR_REV="$(manifest_rev 'https://github.com/jonaprieto/lean-termcolor.git')"

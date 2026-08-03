@@ -1,10 +1,10 @@
-# grip-diagnostics
+# lean-grip-diagnostics
 
-[![CI](https://github.com/jonaprieto/grip-diagnostics/actions/workflows/ci.yml/badge.svg)](https://github.com/jonaprieto/grip-diagnostics/actions/workflows/ci.yml)
+[![CI](https://github.com/jonaprieto/lean-grip-diagnostics/actions/workflows/ci.yml/badge.svg)](https://github.com/jonaprieto/lean-grip-diagnostics/actions/workflows/ci.yml)
 [![Lean](https://img.shields.io/badge/Lean-v4.28.0-blue)](lean-toolchain)
 [![License](https://img.shields.io/badge/license-Apache--2.0-green)](LICENSE)
 
-The optional source-annotated diagnostics frontend for [Grip](https://github.com/jonaprieto/grip).
+The optional source-annotated diagnostics frontend for [Grip](https://github.com/jonaprieto/lean-grip).
 It translates Grip's byte-offset `ParseError` into the rich, pure `TermColor.Diagnostics` model.
 
 Grip stays Batteries-only and terminal-independent. This package adds the presentation layer:
@@ -17,7 +17,7 @@ Add the package to `lakefile.lean`:
 
 ~~~lean
 require «grip-diagnostics» from git
-  "https://github.com/jonaprieto/grip-diagnostics.git"
+  "https://github.com/jonaprieto/lean-grip-diagnostics.git"
   @ "v0.2.1"
 ~~~
 
