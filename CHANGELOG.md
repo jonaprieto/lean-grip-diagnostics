@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1 — 2026-08-02
+
+- Terminate the demo output with a newline so the shell prompt starts on its own line.
+
 ## 0.1.0 — 2026-08-02
 
 - Added the optional `GripDiagnostics` source-annotated error adapter.

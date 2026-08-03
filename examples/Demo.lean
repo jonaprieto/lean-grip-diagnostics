@@ -35,4 +35,4 @@ private def output (target : RenderTarget) : String :=
 
 def main : IO Unit := do
   let target ← TermColor.target
-  IO.print (output target)
+  IO.println (output target)
