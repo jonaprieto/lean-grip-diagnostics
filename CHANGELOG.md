@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.2 — 2026-08-02
+
+- Enable clickable OSC-8 source locations in the interactive demo when styling is enabled.
+
 ## 0.1.1 — 2026-08-02
 
 - Terminate the demo output with a newline so the shell prompt starts on its own line.

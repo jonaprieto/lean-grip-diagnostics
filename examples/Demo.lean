@@ -34,5 +34,6 @@ private def output (target : RenderTarget) : String :=
     { width := 76, contextLines := 1, hyperlinks := true } ColorScheme.catppuccin)
 
 def main : IO Unit := do
-  let target ← TermColor.target
+  let detected ← TermColor.target
+  let target := if detected.styles then RenderTarget.withHyperlinks detected else detected
   IO.println (output target)
