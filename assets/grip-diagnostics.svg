@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650" role="img" aria-labelledby="title desc">
+  <title id="title">Grip source-annotated parser error</title>
+  <desc id="desc">A Catppuccin terminal showing a Grip parse error rendered with source context, a byte-accurate caret, help text, and a clickable source location.</desc>
+  <rect width="1200" height="650" rx="22" fill="#1e1e2e"/>
+  <rect width="1200" height="60" rx="22" fill="#292b3b"/>
+  <rect y="38" width="1200" height="22" fill="#292b3b"/>
+  <circle cx="34" cy="30" r="9" fill="#f38ba8"/>
+  <circle cx="62" cy="30" r="9" fill="#f9e2af"/>
+  <circle cx="90" cy="30" r="9" fill="#a6e3a1"/>
+  <text x="126" y="37" fill="#cba6f7" font-family="SFMono-Regular,Menlo,monospace" font-size="21" font-weight="700">grip-diagnostics · byte offsets → rich source errors</text>
+  <text x="54" y="111" fill="#cdd6f4" font-family="SFMono-Regular,Menlo,monospace" font-size="28" font-weight="700">A parser failure should explain the source</text>
+  <text x="54" y="143" fill="#a6adc8" font-family="SFMono-Regular,Menlo,monospace" font-size="17">the core stays Batteries-only; the frontend supplies readable terminal presentation</text>
+  <rect x="42" y="172" width="1116" height="400" rx="16" fill="#181825" stroke="#f38ba8" stroke-width="2"/>
+  <text x="70" y="217" fill="#f38ba8" font-family="SFMono-Regular,Menlo,monospace" font-size="21" font-weight="700">error [GRIP001]: parse error</text>
+  <text x="70" y="258" fill="#cdd6f4" font-family="SFMono-Regular,Menlo,monospace" font-size="20">  ╰─&gt; </text>
+  <text x="153" y="258" fill="#94e2d5" font-family="SFMono-Regular,Menlo,monospace" font-size="20" font-weight="700" text-decoration="underline">config.toml</text>
+  <text x="306" y="258" fill="#cdd6f4" font-family="SFMono-Regular,Menlo,monospace" font-size="20">:1:12</text>
+  <text x="70" y="294" fill="#6c7086" font-family="SFMono-Regular,Menlo,monospace" font-size="20">   │</text>
+  <text x="70" y="337" fill="#a6adc8" font-family="SFMono-Regular,Menlo,monospace" font-size="20">1 │ </text>
+  <text x="132" y="337" fill="#cdd6f4" font-family="SFMono-Regular,Menlo,monospace" font-size="20">timeout = 2x</text>
+  <text x="70" y="376" fill="#6c7086" font-family="SFMono-Regular,Menlo,monospace" font-size="20">  │ </text>
+  <text x="322" y="376" fill="#f38ba8" font-family="SFMono-Regular,Menlo,monospace" font-size="20" font-weight="700">^</text>
+  <text x="350" y="376" fill="#f38ba8" font-family="SFMono-Regular,Menlo,monospace" font-size="19">expected a duration</text>
+  <text x="70" y="418" fill="#6c7086" font-family="SFMono-Regular,Menlo,monospace" font-size="20">2 │ workers = 4</text>
+  <text x="70" y="468" fill="#a6e3a1" font-family="SFMono-Regular,Menlo,monospace" font-size="20" font-weight="700" text-decoration="underline">help</text>
+  <text x="126" y="468" fill="#a6e3a1" font-family="SFMono-Regular,Menlo,monospace" font-size="20">: </text>
+  <text x="155" y="468" fill="#cdd6f4" font-family="SFMono-Regular,Menlo,monospace" font-size="20">check the duration suffix: s, m, or h</text>
+  <line x1="70" y1="505" x2="1130" y2="505" stroke="#313244" stroke-width="2"/>
+  <text x="70" y="544" fill="#89b4fa" font-family="SFMono-Regular,Menlo,monospace" font-size="16">byte-accurate span</text>
+  <text x="300" y="544" fill="#6c7086" font-family="SFMono-Regular,Menlo,monospace" font-size="16">→</text>
+  <text x="330" y="544" fill="#f9e2af" font-family="SFMono-Regular,Menlo,monospace" font-size="16">Unicode-aware display column</text>
+  <text x="720" y="544" fill="#6c7086" font-family="SFMono-Regular,Menlo,monospace" font-size="16">→</text>
+  <text x="750" y="544" fill="#cba6f7" font-family="SFMono-Regular,Menlo,monospace" font-size="16">plain / ANSI / OSC-8</text>
+</svg>

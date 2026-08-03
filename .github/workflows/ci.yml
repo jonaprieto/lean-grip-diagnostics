@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  style:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Lean style
+        run: python3 scripts/style-check.py
+      - name: Git whitespace
+        run: git diff --check
+      - name: Validate README artwork
+        run: python3 -c 'import pathlib, xml.etree.ElementTree as ET; [ET.parse(path) for path in pathlib.Path("assets").glob("*.svg")]'
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Cache elan toolchain
+        uses: actions/cache@v6
+        with:
+          path: ~/.elan
+          key: elan-${{ runner.os }}-${{ hashFiles('lean-toolchain') }}
+      - name: Cache build
+        uses: actions/cache@v6
+        with:
+          path: .lake
+          key: lake-${{ runner.os }}-${{ hashFiles('lake-manifest.json', 'lakefile.lean', 'lean-toolchain') }}
+          restore-keys: lake-${{ runner.os }}-
+      - name: Fetch private ecosystem dependencies
+        env:
+          GH_TOKEN: ${{ secrets.ECOSYSTEM_READ_TOKEN || github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p .lake/packages
+          if [ ! -d .lake/packages/grip/.git ]; then
+            git clone --depth=1 "https://x-access-token:${GH_TOKEN}@github.com/jonaprieto/grip.git" \
+              .lake/packages/grip
+          fi
+          if [ ! -d .lake/packages/termcolor-diagnostics/.git ]; then
+            git clone --depth=1 "https://x-access-token:${GH_TOKEN}@github.com/jonaprieto/lean-termcolor-diagnostics.git" \
+              .lake/packages/termcolor-diagnostics
+          fi
+          git -C .lake/packages/grip fetch --depth=1 origin \
+            fceb252946b3e840889a9ac50732cf5df0265937
+          git -C .lake/packages/termcolor-diagnostics fetch --depth=1 origin \
+            v0.1.8
+          git -C .lake/packages/grip checkout --detach \
+            fceb252946b3e840889a9ac50732cf5df0265937
+          git -C .lake/packages/termcolor-diagnostics checkout --detach \
+            v0.1.8
+      - uses: leanprover/lean-action@v1
+        with:
+          build-args: "GripDiagnostics GripDiagnostics.Properties tests demo readme"
+      - name: Run tests
+        run: ./.lake/build/bin/tests
+      - name: Verify README examples
+        run: ./.lake/build/bin/readme >/dev/null
+      - name: Render demo gallery
+        run: ./.lake/build/bin/demo >/dev/null
+      - name: Audit proof axioms
+        run: python3 scripts/check-axioms.py

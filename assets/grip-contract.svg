@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" role="img" aria-labelledby="title desc">
+  <title id="title">Grip parser contract and diagnostics boundary</title>
+  <desc id="desc">A dark panel showing Grip's type-level progress gate, machine-checked parser contract, and the optional diagnostics boundary.</desc>
+  <rect width="1200" height="500" rx="22" fill="#1e1e2e"/>
+  <rect width="1200" height="60" rx="22" fill="#292b3b"/>
+  <rect y="38" width="1200" height="22" fill="#292b3b"/>
+  <circle cx="34" cy="30" r="9" fill="#f38ba8"/>
+  <circle cx="62" cy="30" r="9" fill="#f9e2af"/>
+  <circle cx="90" cy="30" r="9" fill="#a6e3a1"/>
+  <text x="126" y="37" fill="#cba6f7" font-family="SFMono-Regular,Menlo,monospace" font-size="21" font-weight="700">grip · proofs stay visible at the presentation boundary</text>
+  <text x="54" y="112" fill="#cdd6f4" font-family="SFMono-Regular,Menlo,monospace" font-size="25" font-weight="700">A small adapter keeps the guarantees and improves the message</text>
+  <rect x="42" y="150" width="350" height="278" rx="16" fill="#181825" stroke="#f38ba8" stroke-width="2"/>
+  <text x="70" y="195" fill="#f38ba8" font-family="SFMono-Regular,Menlo,monospace" font-size="19" font-weight="700">PROGRESS GATE</text>
+  <text x="70" y="244" fill="#cdd6f4" font-family="SFMono-Regular,Menlo,monospace" font-size="20">many (pure x)</text>
+  <text x="70" y="278" fill="#f38ba8" font-family="SFMono-Regular,Menlo,monospace" font-size="18">rejected by the type checker</text>
+  <text x="70" y="332" fill="#cdd6f4" font-family="SFMono-Regular,Menlo,monospace" font-size="20">many hexByte</text>
+  <text x="70" y="366" fill="#a6e3a1" font-family="SFMono-Regular,Menlo,monospace" font-size="18">always consumes · safe repetition</text>
+  <text x="70" y="402" fill="#6c7086" font-family="SFMono-Regular,Menlo,monospace" font-size="15">compile-time contract</text>
+  <rect x="425" y="150" width="350" height="278" rx="16" fill="#181825" stroke="#cba6f7" stroke-width="2"/>
+  <text x="453" y="195" fill="#cba6f7" font-family="SFMono-Regular,Menlo,monospace" font-size="19" font-weight="700">MACHINE-CHECKED</text>
+  <text x="453" y="244" fill="#cdd6f4" font-family="SFMono-Regular,Menlo,monospace" font-size="20">render JSON value</text>
+  <text x="453" y="278" fill="#6c7086" font-family="SFMono-Regular,Menlo,monospace" font-size="20">↓</text>
+  <text x="453" y="312" fill="#cdd6f4" font-family="SFMono-Regular,Menlo,monospace" font-size="20">parse bytes</text>
+  <text x="453" y="346" fill="#6c7086" font-family="SFMono-Regular,Menlo,monospace" font-size="20">↓</text>
+  <text x="453" y="380" fill="#a6e3a1" font-family="SFMono-Regular,Menlo,monospace" font-size="20">ok value</text>
+  <text x="453" y="412" fill="#6c7086" font-family="SFMono-Regular,Menlo,monospace" font-size="15">grip-props round-trip theorem</text>
+  <rect x="808" y="150" width="350" height="278" rx="16" fill="#181825" stroke="#94e2d5" stroke-width="2"/>
+  <text x="836" y="195" fill="#94e2d5" font-family="SFMono-Regular,Menlo,monospace" font-size="19" font-weight="700">OPTIONAL FRONTEND</text>
+  <text x="836" y="244" fill="#cdd6f4" font-family="SFMono-Regular,Menlo,monospace" font-size="20">ParseError.pos</text>
+  <text x="836" y="278" fill="#6c7086" font-family="SFMono-Regular,Menlo,monospace" font-size="20">↓</text>
+  <text x="836" y="312" fill="#cdd6f4" font-family="SFMono-Regular,Menlo,monospace" font-size="20">source label</text>
+  <text x="836" y="346" fill="#6c7086" font-family="SFMono-Regular,Menlo,monospace" font-size="20">↓</text>
+  <text x="836" y="380" fill="#a6e3a1" font-family="SFMono-Regular,Menlo,monospace" font-size="20">readable terminal output</text>
+  <text x="836" y="412" fill="#6c7086" font-family="SFMono-Regular,Menlo,monospace" font-size="15">no terminal dependency in Grip</text>
+</svg>
