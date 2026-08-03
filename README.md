@@ -34,9 +34,9 @@ The adapter accepts the original source bytes, so parser offsets stay byte-accur
 renderer computes human-facing line numbers and display columns:
 
 ~~~lean
-import Grip
-import GripDiagnostics
-import TermColor.Diagnostics
+import Grip                  -- parser and ParseError types
+import GripDiagnostics       -- Grip -> TermColor adapter
+import TermColor.Diagnostics -- source-aware renderer
 
 open Grip
 open GripDiagnostics
