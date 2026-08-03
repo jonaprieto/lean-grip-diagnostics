@@ -49,14 +49,30 @@ jobs:
             git clone --depth=1 "https://x-access-token:${GH_TOKEN}@github.com/jonaprieto/lean-termcolor-diagnostics.git" \
               .lake/packages/termcolor-diagnostics
           fi
+          if [ ! -d .lake/packages/termcolor-layout/.git ]; then
+            git clone --depth=1 "https://x-access-token:${GH_TOKEN}@github.com/jonaprieto/lean-termcolor-layout.git" \
+              .lake/packages/termcolor-layout
+          fi
+          if [ ! -d .lake/packages/termcolor/.git ]; then
+            git clone --depth=1 "https://x-access-token:${GH_TOKEN}@github.com/jonaprieto/lean-termcolor.git" \
+              .lake/packages/termcolor
+          fi
           git -C .lake/packages/grip fetch --depth=1 origin \
             fceb252946b3e840889a9ac50732cf5df0265937
           git -C .lake/packages/termcolor-diagnostics fetch --depth=1 origin \
             v0.1.8
+          git -C .lake/packages/termcolor-layout fetch --depth=1 origin \
+            de2394b9e1bd2328e3577115ab4b75fd1d8faf8e
+          git -C .lake/packages/termcolor fetch --depth=1 origin \
+            d0d9a6d24cd06a2ca5de0c47d1860fb0363aa397
           git -C .lake/packages/grip checkout --detach \
             fceb252946b3e840889a9ac50732cf5df0265937
           git -C .lake/packages/termcolor-diagnostics checkout --detach \
             v0.1.8
+          git -C .lake/packages/termcolor-layout checkout --detach \
+            de2394b9e1bd2328e3577115ab4b75fd1d8faf8e
+          git -C .lake/packages/termcolor checkout --detach \
+            d0d9a6d24cd06a2ca5de0c47d1860fb0363aa397
       - uses: leanprover/lean-action@v1
         with:
           build-args: "GripDiagnostics GripDiagnostics.Properties tests demo readme"
