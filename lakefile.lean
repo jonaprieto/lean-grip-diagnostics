@@ -11,7 +11,7 @@ require grip from git
 
 require «termcolor-diagnostics» from git
   "https://github.com/jonaprieto/lean-termcolor-diagnostics.git"
-  @ "dd016af716eece82535fbfd082522dbe1c5478e4"
+  @ "v0.1.10"
 
 @[default_target]
 lean_lib GripDiagnostics where
