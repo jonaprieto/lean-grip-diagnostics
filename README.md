@@ -7,8 +7,6 @@
 Adapter from Grip's byte-offset `ParseError` to the pure
 [`termcolor-diagnostics`](https://github.com/jonaprieto/lean-termcolor-diagnostics) model.
 
-Version: `v0.2.3`
-
 ## Install
 
 ```lean
