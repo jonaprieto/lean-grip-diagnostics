@@ -13,8 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - name: Lean style
-        run: python3 scripts/style-check.py
+        with:
+          persist-credentials: false
+      - uses: jonaprieto/precommit-lean/.github/actions/precommit@v0.1.1
+        with:
+          token: ${{ secrets.ECOSYSTEM_READ_TOKEN || github.token }}
+          skip: lean-axioms
       - name: Git whitespace
         run: git diff --check
       - name: Validate README artwork
@@ -100,5 +104,7 @@ jobs:
         run: ./.lake/build/bin/readme >/dev/null
       - name: Render demo gallery
         run: ./.lake/build/bin/demo >/dev/null
-      - name: Audit proof axioms
-        run: python3 scripts/check-axioms.py
+      - uses: jonaprieto/precommit-lean/.github/actions/precommit@v0.1.1
+        with:
+          token: ${{ secrets.ECOSYSTEM_READ_TOKEN || github.token }}
+          hooks: lean-axioms

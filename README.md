@@ -122,8 +122,7 @@ lake update
 lake build GripDiagnostics GripDiagnostics.Properties tests demo readme
 lake exe tests
 lake exe demo
-python3 scripts/check-axioms.py
-python3 scripts/style-check.py
+pre-commit run --all-files
 ~~~
 
 The demo exercises a real Grip parser failure and renders the resulting source annotation. The
