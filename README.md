@@ -1,7 +1,9 @@
 # grip-diagnostics
 
 [![CI](https://github.com/jonaprieto/lean-grip-diagnostics/actions/workflows/ci.yml/badge.svg)](https://github.com/jonaprieto/lean-grip-diagnostics/actions/workflows/ci.yml)
-[![Lean 4](https://img.shields.io/badge/Lean%204-library-5f5f5f)](lean-toolchain)
+[![Release](https://img.shields.io/github/v/release/jonaprieto/lean-grip-diagnostics?display_name=tag&sort=semver)](https://github.com/jonaprieto/lean-grip-diagnostics/releases)
+[![Lean 4](https://img.shields.io/badge/Lean%204-v4.33.0-6f42c1)](lean-toolchain)
+[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-4c8bf5)](https://jonaprieto.github.io/lean-grip-diagnostics/)
 [![License](https://img.shields.io/badge/license-Apache--2.0-green)](LICENSE)
 
 Adapter from Grip's byte-offset `ParseError` to the pure
@@ -11,7 +13,7 @@ Adapter from Grip's byte-offset `ParseError` to the pure
 
 ```lean
 require grip-diagnostics from git
-  "https://github.com/jonaprieto/lean-grip-diagnostics.git" @ "v0.2.3"
+  "https://github.com/jonaprieto/lean-grip-diagnostics.git" @ "v0.2.5"
 ```
 
 ## Quick start
