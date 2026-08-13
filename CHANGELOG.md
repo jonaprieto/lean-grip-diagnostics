@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.4 — 2026-08-12
+
+- Adopt the shared `precommit-lean` hooks and refresh them to the pinned release.
+- Rewrite the README concisely and drop the version number from it; the lakefile is the
+  only place a pin belongs.
+
 ## 0.2.1 — 2026-08-02
 
 - Fix CI to resolve private dependency revisions from `lake-manifest.json` instead of stale pins.
