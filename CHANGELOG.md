@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.7 — 2026-08-13
+
+- Add the standard review guidance to the README.
+- Pin the newest released Grip and TermColor Diagnostics dependencies.
+
 ## 0.2.6 — 2026-08-13
 
 - Publish the dependency-graph README cleanup.
