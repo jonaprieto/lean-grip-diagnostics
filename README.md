@@ -51,7 +51,8 @@ lake exe demo
 
 [`grip`](https://github.com/jonaprieto/lean-grip) supplies parsing;
 [`termcolor-diagnostics`](https://github.com/jonaprieto/lean-termcolor-diagnostics) supplies the
-renderer.
+renderer. [`lean-calc-chat`](https://github.com/jonaprieto/lean-calc-chat) uses the adapter in a
+terminal application.
 
 ## License
 
