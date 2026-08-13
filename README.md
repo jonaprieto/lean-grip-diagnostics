@@ -1,4 +1,4 @@
-# grip-diagnostics
+# lean-grip-diagnostics
 
 [![CI](https://github.com/jonaprieto/lean-grip-diagnostics/actions/workflows/ci.yml/badge.svg)](https://github.com/jonaprieto/lean-grip-diagnostics/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/jonaprieto/lean-grip-diagnostics?display_name=tag&sort=semver)](https://github.com/jonaprieto/lean-grip-diagnostics/releases)
@@ -8,6 +8,18 @@
 
 Adapter from Grip's byte-offset `ParseError` to the pure
 [`termcolor-diagnostics`](https://github.com/jonaprieto/lean-termcolor-diagnostics) model.
+
+## Status and review
+
+These libraries are actively evolving and are developed with AI assistance and human review.
+CI and machine-checked proofs provide useful evidence, but do not guarantee correctness,
+soundness, portability, performance, or suitability for every use case. Validate behavior
+and assumptions before relying on a release.
+
+Reviewer feedback is welcome, especially on correctness, proofs, API design, usability,
+portability, performance, documentation, and real-world use. Please use the
+[issue tracker](https://github.com/jonaprieto/lean-grip-diagnostics/issues) or open a PR with a
+reproducible example and the expected behavior.
 
 ## Install
 
