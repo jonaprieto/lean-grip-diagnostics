@@ -7,11 +7,11 @@ package «grip-diagnostics» where
 
 require grip from git
   "https://github.com/jonaprieto/lean-grip.git"
-  @ "v0.3.5"
+  @ "v0.3.6"
 
 require «termcolor-diagnostics» from git
   "https://github.com/jonaprieto/lean-termcolor-diagnostics.git"
-  @ "v0.1.17"
+  @ "v0.1.18"
 
 @[default_target]
 lean_lib GripDiagnostics where
