@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.9 — 2026-09-09
+
+- Refresh dependencies and document the contribution policy and package problem.
+
 ## 0.2.8 — 2026-09-08
 
 - Support Lean v4.33.1 and refresh Grip and TermColor Diagnostics dependencies.
