@@ -9,6 +9,11 @@
 Adapter from Grip's byte-offset `ParseError` to the pure
 [`termcolor-diagnostics`](https://github.com/jonaprieto/lean-termcolor-diagnostics) model.
 
+## Problem
+
+Byte offsets from a parser are not yet useful source diagnostics; they need line, span, and
+rendering context without making Grip depend on a terminal stack.
+
 ## Development
 
 This project is maintained by its author with AI-assisted development tools.
