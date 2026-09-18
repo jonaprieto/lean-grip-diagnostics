@@ -24,7 +24,11 @@ namespace GripDiagnostics
 open Grip
 open TermColor.Diagnostics
 
-private def safeOffset (source : Source) (error : ParseError) : Nat :=
+private
+def safeOffset
+    (source : Source)
+    (error : ParseError)
+    : Nat :=
   min error.pos (Source.utf8Bytes source).size
 
 /-- Convert a Grip parse failure into one primary source label.

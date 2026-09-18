@@ -14,19 +14,28 @@ open TermColor.Diagnostics
 
 private def input : String := "timeout = 2x\nworkers = 4\n界e\u0301 = true"
 
-private def source : Source :=
+private
+def source
+    : Source :=
   Source.fromBytes "config.toml" input.toUTF8 |>.withUri "file:///tmp/config.toml"
 
-private def parse : Parser Nat :=
+private
+def parse
+    : Parser Nat :=
   GParser.weakenFallible
     ((GParser.string "timeout = " *> GParser.nat) <* GParser.eof)
 
-private def failure : ParseError :=
+private
+def failure
+    : ParseError :=
   match parse.parse input.toUTF8 with
   | .error error => error
   | .ok _ => { pos := input.toUTF8.size, line := 1, col := 1, expected := ["end of input"] }
 
-private def output (target : RenderTarget) : String :=
+private
+def output
+    (target : RenderTarget)
+    : String :=
   let diagnostic := (diagnostic source failure)
     |>.withCode "GRIP001"
     |>.withHelp "check the duration suffix: s, m, or h"
