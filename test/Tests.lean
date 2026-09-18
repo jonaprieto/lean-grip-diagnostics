@@ -18,19 +18,13 @@ def check
     : Option String :=
   if condition then none else some name
 
-private
-def source
-    : Source :=
+private def source : Source :=
   Source.fromBytes "config.toml" "timeout = 2x\nworkers = 4\n界e\u0301 = true".toUTF8
 
-private
-def parseError
-    : ParseError :=
+private def parseError : ParseError :=
   { pos := 11, line := 1, col := 12, expected := ["a duration"] }
 
-private
-def rich
-    : Diagnostic :=
+private def rich : Diagnostic :=
   (diagnostic source parseError)
     |>.withCode "GRIP001"
     |>.withHelp "try timeout = 2m"
@@ -40,17 +34,14 @@ def rendered
     (source : Source)
     (error : ParseError)
     (config : RenderConfig := {})
-    (scheme : ColorScheme := ColorScheme.catppuccin) : Text :=
+    (scheme : ColorScheme := ColorScheme.catppuccin)
+    : Text :=
   TermColor.Diagnostics.render #[source] (diagnostic source error) config scheme
 
-private
-def plainRich
-    : String :=
+private def plainRich : String :=
   (TermColor.Diagnostics.render #[source] rich { contextLines := 0 }).plainText
 
-private
-def checks
-    : List (Option String) :=
+private def checks : List (Option String) :=
   [ check "header is rendered" (plainRich.contains "error [GRIP001]: parse error")
   , check "filename and display location are rendered"
       (plainRich.contains "config.toml:1:12")
