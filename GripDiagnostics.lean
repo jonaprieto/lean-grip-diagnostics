@@ -28,7 +28,8 @@ private
 def safeOffset
     (source : Source)
     (error : ParseError)
-    : Nat :=
+    : Nat
+    :=
   min error.pos (Source.utf8Bytes source).size
 
 /-- Convert a Grip parse failure into one primary source label.
@@ -39,7 +40,8 @@ def diagnostic
     (source : Source)
     (error : ParseError)
     (title : String := "parse error")
-    : Diagnostic :=
+    : Diagnostic
+    :=
   (Diagnostic.error title).withLabel
     (Label.primary (Span.point 0 (safeOffset source error)) error.message)
 
