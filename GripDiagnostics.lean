@@ -35,8 +35,11 @@ def safeOffset
 
 The returned value is intentionally a normal `Diagnostic`: callers can add a code, note, or help
 message before passing it to `TermColor.Diagnostics.render`. -/
-def diagnostic (source : Source) (error : ParseError) (title : String := "parse error") :
-    Diagnostic :=
+def diagnostic
+    (source : Source)
+    (error : ParseError)
+    (title : String := "parse error")
+    : Diagnostic :=
   (Diagnostic.error title).withLabel
     (Label.primary (Span.point 0 (safeOffset source error)) error.message)
 
