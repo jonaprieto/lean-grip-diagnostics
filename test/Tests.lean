@@ -15,7 +15,8 @@ private
 def check
     (name : String)
     (condition : Bool)
-    : Option String :=
+    : Option String
+    :=
   if condition then none else some name
 
 private def source : Source :=
@@ -35,7 +36,8 @@ def rendered
     (error : ParseError)
     (config : RenderConfig := {})
     (scheme : ColorScheme := ColorScheme.catppuccin)
-    : Text :=
+    : Text
+    :=
   TermColor.Diagnostics.render #[source] (diagnostic source error) config scheme
 
 private def plainRich : String :=

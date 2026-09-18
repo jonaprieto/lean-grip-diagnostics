@@ -29,7 +29,8 @@ private def failure : ParseError :=
 private
 def output
     (target : RenderTarget)
-    : String :=
+    : String
+    :=
   let diagnostic := (diagnostic source failure)
     |>.withCode "GRIP001"
     |>.withHelp "check the duration suffix: s, m, or h"

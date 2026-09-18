@@ -20,7 +20,8 @@ theorem diagnostic_uses_clamped_byte_offset (source : Source) (error : ParseErro
 theorem diagnostic_has_one_primary_label
     (source : Source)
     (error : ParseError)
-    : (diagnostic source error).labels.length = 1 := by
+    : (diagnostic source error).labels.length = 1
+    := by
   rfl
 
 end GripDiagnostics.Properties

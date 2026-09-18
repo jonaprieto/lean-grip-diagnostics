@@ -14,7 +14,8 @@ open TermColor.Diagnostics
 theorem source_from_bytes_preserves_input
     (name : String)
     (bytes : ByteArray)
-    : Source.utf8Bytes (Source.fromBytes name bytes) = bytes := by
+    : Source.utf8Bytes (Source.fromBytes name bytes) = bytes
+    := by
   rfl
 
 end GripDiagnostics.Properties
