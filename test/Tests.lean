@@ -19,13 +19,22 @@ def check
     :=
   if condition then none else some name
 
-private def source : Source :=
+private
+def source
+    : Source
+    :=
   Source.fromBytes "config.toml" "timeout = 2x\nworkers = 4\n界e\u0301 = true".toUTF8
 
-private def parseError : ParseError :=
+private
+def parseError
+    : ParseError
+    :=
   { pos := 11, line := 1, col := 12, expected := ["a duration"] }
 
-private def rich : Diagnostic :=
+private
+def rich
+    : Diagnostic
+    :=
   (diagnostic source parseError)
     |>.withCode "GRIP001"
     |>.withHelp "try timeout = 2m"
@@ -40,10 +49,16 @@ def rendered
     :=
   TermColor.Diagnostics.render #[source] (diagnostic source error) config scheme
 
-private def plainRich : String :=
+private
+def plainRich
+    : String
+    :=
   (TermColor.Diagnostics.render #[source] rich { contextLines := 0 }).plainText
 
-private def checks : List (Option String) :=
+private
+def checks
+    : List (Option String)
+    :=
   [ check "header is rendered" (plainRich.contains "error [GRIP001]: parse error")
   , check "filename and display location are rendered"
       (plainRich.contains "config.toml:1:12")
@@ -80,7 +95,9 @@ private def checks : List (Option String) :=
          output.contains "\u001b]8;;\u001b\\")
   ]
 
-def main : IO UInt32 := do
+def main
+    : IO UInt32
+    := do
   let failures := checks.filterMap id
   if failures.isEmpty then
     IO.println s!"OK: {checks.length} grip diagnostics checks"
