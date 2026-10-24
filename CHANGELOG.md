@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.10 — 2026-10-24
+
+- Refresh Grip to v0.4.1.
+- Fix the README install snippet, which did not parse, and document that the label points into
+  source id `0`, so the source comes first in the array passed to `render`.
+- Lay out declarations one binder group per line.
+
 ## 0.2.9 — 2026-09-09
 
 - Refresh dependencies and document the contribution policy and package problem.
