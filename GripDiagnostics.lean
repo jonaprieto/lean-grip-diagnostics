@@ -34,8 +34,9 @@ def safeOffset
 
 /-- Convert a Grip parse failure into one primary source label.
 
-The returned value is intentionally a normal `Diagnostic`: callers can add a code, note, or help
-message before passing it to `TermColor.Diagnostics.render`. -/
+The label points into source id `0`, so render it with `source` as the first entry of the sources
+array, as in `render #[source] (diagnostic source error)`. The returned value is intentionally a
+normal `Diagnostic`: callers can add a code, note, or help message before rendering it. -/
 def diagnostic
     (source : Source)
     (error : ParseError)
