@@ -3,7 +3,6 @@
 [![CI](https://github.com/jonaprieto/lean-grip-diagnostics/actions/workflows/ci.yml/badge.svg)](https://github.com/jonaprieto/lean-grip-diagnostics/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/jonaprieto/lean-grip-diagnostics?display_name=tag&sort=semver)](https://github.com/jonaprieto/lean-grip-diagnostics/releases)
 [![Lean 4](https://img.shields.io/badge/Lean%204-v4.33.1-6f42c1)](lean-toolchain)
-[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-4c8bf5)](https://jonaprieto.github.io/lean-grip-diagnostics/)
 [![License](https://img.shields.io/badge/license-Apache--2.0-green)](LICENSE)
 
 Adapter from Grip's byte-offset `ParseError` to the pure
@@ -21,9 +20,11 @@ Changes are reviewed, tested, and remain the maintainer's responsibility.
 
 ## Install
 
+Pin the newest release tag (the Release badge above shows it) in place of `vX.Y.Z`:
+
 ```lean
-require grip-diagnostics from git
-  "https://github.com/jonaprieto/lean-grip-diagnostics.git" @ "v0.2.5"
+require «grip-diagnostics» from git
+  "https://github.com/jonaprieto/lean-grip-diagnostics.git" @ "vX.Y.Z"
 ```
 
 ## Quick start
