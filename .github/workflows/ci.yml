@@ -28,6 +28,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
       - name: Cache elan toolchain
         uses: actions/cache@v6
         with:
@@ -39,62 +41,12 @@ jobs:
           path: .lake
           key: lake-${{ runner.os }}-${{ hashFiles('lake-manifest.json', 'lakefile.lean', 'lean-toolchain') }}
           restore-keys: lake-${{ runner.os }}-
-      - name: Fetch private ecosystem dependencies
+      - name: Configure private ecosystem URL
         env:
           GH_TOKEN: ${{ secrets.ECOSYSTEM_READ_TOKEN }}
         run: |
-          set -euo pipefail
-          mkdir -p .lake/packages
-          if [ ! -d .lake/packages/grip/.git ]; then
-            git clone --depth=1 "https://x-access-token:${GH_TOKEN}@github.com/jonaprieto/lean-grip.git" \
-              .lake/packages/grip
-          fi
-          if [ ! -d .lake/packages/termcolor-diagnostics/.git ]; then
-            git clone --depth=1 "https://x-access-token:${GH_TOKEN}@github.com/jonaprieto/lean-termcolor-diagnostics.git" \
-              .lake/packages/termcolor-diagnostics
-          fi
-          if [ ! -d .lake/packages/termcolor-layout/.git ]; then
-            git clone --depth=1 "https://x-access-token:${GH_TOKEN}@github.com/jonaprieto/lean-termcolor-layout.git" \
-              .lake/packages/termcolor-layout
-          fi
-          if [ ! -d .lake/packages/termcolor/.git ]; then
-            git clone --depth=1 "https://x-access-token:${GH_TOKEN}@github.com/jonaprieto/lean-termcolor.git" \
-              .lake/packages/termcolor
-          fi
-          manifest_rev() {
-            python3 - "$1" <<'PY'
-          import json
-          import sys
-
-          url = sys.argv[1]
-          for package in json.load(open("lake-manifest.json"))["packages"]:
-              if package["url"] == url:
-                  print(package["rev"])
-                  break
-          else:
-              raise SystemExit(f"missing manifest entry: {url}")
-          PY
-          }
-          GRIP_REV="$(manifest_rev 'https://github.com/jonaprieto/lean-grip.git')"
-          DIAGNOSTICS_REV="$(manifest_rev 'https://github.com/jonaprieto/lean-termcolor-diagnostics.git')"
-          LAYOUT_REV="$(manifest_rev 'https://github.com/jonaprieto/lean-termcolor-layout.git')"
-          TERMCOLOR_REV="$(manifest_rev 'https://github.com/jonaprieto/lean-termcolor.git')"
-          git -C .lake/packages/grip fetch --depth=1 origin \
-            "${GRIP_REV}"
-          git -C .lake/packages/termcolor-diagnostics fetch --depth=1 origin \
-            "${DIAGNOSTICS_REV}"
-          git -C .lake/packages/termcolor-layout fetch --depth=1 origin \
-            "${LAYOUT_REV}"
-          git -C .lake/packages/termcolor fetch --depth=1 origin \
-            "${TERMCOLOR_REV}"
-          git -C .lake/packages/grip checkout --detach \
-            "${GRIP_REV}"
-          git -C .lake/packages/termcolor-diagnostics checkout --detach \
-            "${DIAGNOSTICS_REV}"
-          git -C .lake/packages/termcolor-layout checkout --detach \
-            "${LAYOUT_REV}"
-          git -C .lake/packages/termcolor checkout --detach \
-            "${TERMCOLOR_REV}"
+          test -n "$GH_TOKEN"
+          git config --global url."https://x-access-token:${GH_TOKEN}@github.com/".insteadOf "https://github.com/"
       - uses: leanprover/lean-action@v1
         with:
           build-args: "GripDiagnostics GripDiagnostics.Properties tests demo readme"
