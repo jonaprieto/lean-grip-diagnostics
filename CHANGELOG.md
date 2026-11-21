@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.11 — 2026-11-20
+
+- Support Lean v4.36.0.
+
 ## 0.2.10 — 2026-10-24
 
 - Refresh Grip to v0.4.1.
